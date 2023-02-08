@@ -25,13 +25,13 @@ app.post('/', (req, res) => {
     const dateTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }).replace(/,/g, '').replace(/\//g, '-').replace(/ /g, '-').replace(/:/g, '-');
 
     nodeHtmlToImage({
-        output: `./images/${dateTime}.png`,
+        output: `./${dateTime}.png`,
         html: getHtml(content.split(/\r?\n/)),
         content: { imageSource: dataURI }
     })
         .then(() => {
             console.log('The image ' + dateTime + '.png created successfully!')
-            res.download(__dirname + `/images/${dateTime}.png`);
+            res.download(__dirname + `/${dateTime}.png`);
         })
         .catch(error => {
             console.error(error)
