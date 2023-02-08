@@ -1,8 +1,8 @@
 exports.getHtml = (content) => {
 
-    const contentHtml = content.map((item) => `<p class="content">${item}</p>`).join('');
+  const contentHtml = content.map((item) => `<p class="content">${item}</p>`).join('');
 
-    return `
+  return `
         <html>
         <head>
             <style>
@@ -26,6 +26,9 @@ exports.getHtml = (content) => {
 };
 
 const css = `
+
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap'); 
+
   body {
     width: 1000px;
     height: 1000px;
@@ -33,6 +36,7 @@ const css = `
     margin: 0;
     padding: 0;
     font-size: 32px;
+    font-family: 'Source Sans Pro', sans-serif;
   }
 
   .main-container {
@@ -41,7 +45,7 @@ const css = `
     background-color: #070707;
     color: white;
     /* Base */
-    padding: 0 15%;
+    padding: 0 20%;
     gap: 1rem;
     box-sizing: border-box;
     display: flex;
@@ -55,6 +59,7 @@ const css = `
     justify-content: start;
     align-items: center;
     gap: 5%;
+    margin-bottom: 5%;
   }
 
   .profile-container img {
@@ -82,5 +87,6 @@ const css = `
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 36px;
   }
 `

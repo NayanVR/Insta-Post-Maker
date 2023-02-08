@@ -9,7 +9,7 @@ const { getHtml } = require('./utils/Template');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const image = fs.readFileSync('./Logo256.png');
+const image = fs.readFileSync('./Logo128.png');
 const base64Image = new Buffer.from(image).toString('base64');
 const dataURI = 'data:image/jpeg;base64,' + base64Image
 
@@ -25,13 +25,13 @@ app.post('/', (req, res) => {
     const dateTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }).replace(/,/g, '').replace(/\//g, '-').replace(/ /g, '-').replace(/:/g, '-');
 
     nodeHtmlToImage({
-        output: `./${dateTime}.png`,
+        output: `./images/${dateTime}.png`,
         html: getHtml(content.split(/\r?\n/)),
         content: { imageSource: dataURI }
     })
         .then(() => {
             console.log('The image ' + dateTime + '.png created successfully!')
-            res.download(__dirname + `/${dateTime}.png`);
+            res.download(__dirname + `/images/${dateTime}.png`);
         })
         .catch(error => {
             console.error(error)
