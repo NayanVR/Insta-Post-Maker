@@ -9,6 +9,8 @@ const { getHtml } = require('./utils/Template');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static('public'));
+
 const image = fs.readFileSync('./Logo128.png');
 const base64Image = new Buffer.from(image).toString('base64');
 const dataURI = 'data:image/jpeg;base64,' + base64Image
